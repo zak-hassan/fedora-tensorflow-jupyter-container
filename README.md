@@ -1,6 +1,15 @@
-# fedora28-tensorflow2.0-cpu
+# Fedora Tensorflow Container
 
 This repository is for demonstration purposes and it is a work in progress. If you would like to try this and give feedback. You can open an issue.
+
+
+To build custom fedora container with custom wheel file:
+
+```bash
+docker build --build-arg TF_WHEEL="..." --rm -t  $IMAGE_NAME  .  
+# Replace TF_WHEEL="..." with the url to the optimized wheel file
+
+```
 
 ### Kubernetes deployment
 
