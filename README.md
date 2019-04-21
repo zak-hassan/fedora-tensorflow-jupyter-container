@@ -13,6 +13,13 @@ docker build --build-arg TF_WHEEL="..." --rm -t  $IMAGE_NAME  .
 
 ### Kubernetes deployment
 
+Below I provide instructions on how to use this container images:
+
+```
+quay.io/zmhassan/fedora28:tensorflow-cpu-2.0.0-alpha0
+quay.io/zmhassan/fedora28:tensorflow-gpu-2.0.0-alpha0
+```
+
 ## CPU TF 2.0
 * Deploying tensorflow 2.0 in fedora container with jupyter notebook
 ```yaml
@@ -27,7 +34,7 @@ spec:
   - name: jp-notebook
     image: quay.io/zmhassan/fedora28:tensorflow-cpu-2.0.0-alpha0
 ```
-# GPU TF 2.0
+## GPU TF 2.0
 ```yaml
 apiVersion: v1
 kind: Pod
