@@ -48,6 +48,12 @@ spec:
     image: quay.io/zmhassan/fedora28:tensorflow-gpu-2.0.0-alpha0
 ```
 
+## Loading Training Data
+
+Often when working with machine learning you will need access to large datasets. Kubernetes makes that easy with persistent volumes and
+persistent volume claims. You can attach your notebook to cloud storage, nfs, cephfs. I provide an example how you can attach to NFS 
+storage:
+
 * If you would like to mount some data into your notebook:
 
 ```yaml
