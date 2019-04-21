@@ -13,7 +13,7 @@ docker build --build-arg TF_WHEEL="..." --rm -t  $IMAGE_NAME  .
 
 ### Kubernetes deployment
 
-
+## CPU TF 2.0
 * Deploying tensorflow 2.0 in fedora container with jupyter notebook
 ```yaml
 apiVersion: v1
@@ -25,7 +25,20 @@ metadata:
 spec:
   containers:
   - name: jp-notebook
-    image: quay.io/zmhassan/fedora28-tensorflow2.0-cpu
+    image: quay.io/zmhassan/fedora28:tensorflow-cpu-2.0.0-alpha0
+```
+# GPU TF 2.0
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: jp-notebook
+  labels:
+    app: jupyter-notebook-pvc
+spec:
+  containers:
+  - name: jp-notebook
+    image: quay.io/zmhassan/fedora28:tensorflow-gpu-2.0.0-alpha0
 ```
 
 * If you would like to mount some data into your notebook:
