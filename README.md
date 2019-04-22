@@ -46,6 +46,9 @@ spec:
   containers:
   - name: jp-notebook
     image: quay.io/zmhassan/fedora28:tensorflow-gpu-2.0.0-alpha0
+    resources:
+      limits:
+       nvidia.com/gpu: 1
 ```
 
 ## Loading Training Data
