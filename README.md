@@ -1,6 +1,6 @@
 # Fedora Tensorflow Container
 
-This repository is for demonstration purposes and it is a work in progress. If you would like to try this and give feedback. You can open an issue.
+This repository is experimental and only for demonstration purposes. It is a work in progress.
 
 
 To build custom fedora container with custom wheel file:
@@ -17,11 +17,11 @@ Below I provide instructions on how to use this container images:
 
 ```
 quay.io/zmhassan/fedora28:tensorflow-cpu-2.0.0-alpha0
-quay.io/zmhassan/fedora28:tensorflow-gpu-2.0.0-alpha0
 ```
 
-## CPU TF 2.0
-* Deploying tensorflow 2.0 in fedora container with jupyter notebook
+## CPU TF 
+
+* Deploying tensorflow 2.0 in fedora container with jupyter notebook with custom wheel
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -34,18 +34,18 @@ spec:
   - name: jp-notebook
     image: quay.io/zmhassan/fedora28:tensorflow-cpu-2.0.0-alpha0
 ```
-## GPU TF 2.0
+
+## GPU TF 
+
 ```yaml
 apiVersion: v1
 kind: Pod
 metadata:
   name: jp-notebook
-  labels:
-    app: jupyter-notebook-pvc
 spec:
   containers:
   - name: jp-notebook
-    image: quay.io/zmhassan/fedora28:tensorflow-gpu-2.0.0-alpha0
+    image: tensorflow/tensorflow:nightly-gpu-py3-jupyter
     resources:
       limits:
        nvidia.com/gpu: 1
@@ -70,10 +70,10 @@ metadata:
 spec:
   containers:
   - name: jp-notebook
-    image: quay.io/zmhassan/fedora28-tensorflow2.0-cpu
+    image: tensorflow/tensorflow:nightly-gpu-py3-jupyter
     volumeMounts:
       - name: my-pvc-nfs
-        mountPath: "/opt/tensorflow/src/data"
+        mountPath: "/tf/data"
   volumes:
   - name: my-pvc-nfs
     persistentVolumeClaim:
